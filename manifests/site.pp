@@ -4,6 +4,7 @@ node ip-10-0-1-161 {
 		user	=> root,
 		minute	=> "*/30",
 	}
+	include sshd
 }
 node ip-10-0-1-46 {
 	cron { "puppet update":
@@ -11,4 +12,5 @@ node ip-10-0-1-46 {
 		user	=> root,
 		minute	=> "*/30",
 	}
+	include sshd
 }
