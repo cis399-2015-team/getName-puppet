@@ -1,12 +1,88 @@
-ssh_authorized_key { "alindsey-Aeroponix":
-	user	=> "ubuntu",
-	key	=> "AAAAB3NzaC1yc2EAAAADAQABAAABAQDFP/RJsWcFJ4X04ZCLBxph2A1veyM8XDaBq6rfEG600U8cMesidfGFgvTVAgvnPDA0hlFWuqTl4ar5qKRsXwKyZXIGbdruhFlJYO0rhlqdgkQctEq80hbM2lexI+B57hbfwoAyaZYbjcEFhW6hIhjFhxWawQhEowMHplAGGqHYxk4B/HaI6VYheHkgq12bSIAnemglCwj5a1VDtX5DrJ5tdOUEgOGBE+jzbVg73jrg7e6lQejI5Zj9XyhfxAVSeDplOwByyrk2rCQQMthYmGV7pRgN1nkyI6zEaUtuXlz4egTfv/qa9Ol7NnWTzdmNljs5eRfJabue8tNPhMn65VQd",
-}
-ssh_authorized_key { "getName-cebert":
-	user	=> "ubuntu",
-	key	=> "AAAAB3NzaC1yc2EAAAADAQABAAABAQCA4i9KNwcY/8uEBCg82pNzRrQOND1k31l2u+9CIkYS+/1+g9BuDsSuKMwAtPnkwRN8g7BvjCVNblxLm55KKkOBPkzOsn1RaMSS7eBFGsqtRp2OhiTWcioT2C9M/9geUg3KZ2OMWqpypB+ojEUQKTReMMRWj5vvyGenGe9JBP4gl0nDGMdAIw/aQ8QdwDoQRXPm4KnqGNDapC1mh9xhh3TO/8Ke4+0JIKMLVUZxLrSneFb6sRHp1sLVJhX1x3E9CwIMdV9h99YQvEMufSCHQcueRZvTWPV0fqxq6XEF5DdoDwylEh9os8dTNoBQQkXKkLBoLutj+OAAjvkOsjPlGQ+j",
-}
-ssh_authorized_key { "carraway-key-pair":
-	user	=> "ubuntu",
-	key	=> "AAAAB3NzaC1yc2EAAAADAQABAAABAQCWKorntXMPYi8fgwNEjKxmOI4JnWnqaQoHQMWrZgsASdjJ1d4KAdWLoFQdo4WPT5mTTfEPYYubHUhFDOFpO1Vcx3mk5dub9bV5TfdUoovmO1sbNmWpwY28IH/Xy/gyeIls7dmVjJD6AkzPW9jT4vr6tfNaWjTOeeyG8ykKetuRFuiOYK9RIch5ovSwT60J1TY+alXZML6S7khGPYZXoMqNKMrLWtLhvG+/mQHS82AufTokb5MDydmCLcufs6F4NyCcUMSmfKrjjuU6pFqkzjwJ95gIzFAY7o4ifdAw0xb8e1rUaaEmaaZcvLhb3gq2jF419KiETKHXZbxyHRO6QiJH",
-}
+# Package generated configuration file
+# See the sshd_config(5) manpage for details
+
+# What ports, IPs and protocols we listen for
+Port 22
+# Use these options to restrict which interfaces/protocols sshd will bind to
+#ListenAddress ::
+#ListenAddress 0.0.0.0
+Protocol 2
+# HostKeys for protocol version 2
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_dsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+HostKey /etc/ssh/ssh_host_ed25519_key
+#Privilege Separation is turned on for security
+UsePrivilegeSeparation yes
+
+# Lifetime and size of ephemeral version 1 server key
+KeyRegenerationInterval 3600
+ServerKeyBits 1024
+
+# Logging
+SyslogFacility AUTH
+LogLevel INFO
+
+# Authentication:
+LoginGraceTime 120
+PermitRootLogin without-password
+StrictModes yes
+
+RSAAuthentication yes
+PubkeyAuthentication yes
+#AuthorizedKeysFile	%h/.ssh/authorized_keys
+
+# Don't read the user's ~/.rhosts and ~/.shosts files
+IgnoreRhosts yes
+# For this to work you will also need host keys in /etc/ssh_known_hosts
+RhostsRSAAuthentication no
+# similar for protocol version 2
+HostbasedAuthentication no
+# Uncomment if you don't trust ~/.ssh/known_hosts for RhostsRSAAuthentication
+#IgnoreUserKnownHosts yes
+
+# To enable empty passwords, change to yes (NOT RECOMMENDED)
+PermitEmptyPasswords no
+
+# Change to yes to enable challenge-response passwords (beware issues with
+# some PAM modules and threads)
+ChallengeResponseAuthentication no
+
+# Change to no to disable tunnelled clear text passwords
+PasswordAuthentication no
+
+# Kerberos options
+#KerberosAuthentication no
+#KerberosGetAFSToken no
+#KerberosOrLocalPasswd yes
+#KerberosTicketCleanup yes
+
+# GSSAPI options
+#GSSAPIAuthentication no
+#GSSAPICleanupCredentials yes
+
+X11Forwarding yes
+X11DisplayOffset 10
+PrintMotd no
+PrintLastLog yes
+TCPKeepAlive yes
+#UseLogin no
+
+#MaxStartups 10:30:60
+#Banner /etc/issue.net
+
+# Allow client to pass locale environment variables
+AcceptEnv LANG LC_*
+
+Subsystem sftp /usr/lib/openssh/sftp-server
+
+# Set this to 'yes' to enable PAM authentication, account processing,
+# and session processing. If this is enabled, PAM authentication will
+# be allowed through the ChallengeResponseAuthentication and
+# PasswordAuthentication.  Depending on your PAM configuration,
+# PAM authentication via ChallengeResponseAuthentication may bypass
+# the setting of "PermitRootLogin without-password".
+# If you just want the PAM account and session checks to run without
+# PAM authentication, then enable this but set PasswordAuthentication
+# and ChallengeResponseAuthentication to 'no'.
+UsePAM yes
