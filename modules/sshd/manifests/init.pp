@@ -10,15 +10,15 @@ class sshd {
 		group	=> root,
 		require => Package["openssh-server"],
 	}
-	file { "~ubuntu/.ssh/":
+	file { "/home/ubuntu/.ssh/":
 		ensure => directory,
-		path   => "~ubuntu/.ssh/",
+		path   => "/home/ubuntu/.ssh/",
 		mode   => 444,
 		owner  => "root",
 		group  => "root,
 	}
-	file { "~ubuntu/.ssh/authorized_keys":
-		require => File["~ubuntu/.ssh/"],
+	file { "/home/ubuntu/.ssh/authorized_keys":
+		require => File["/home/ubuntu/.ssh/"],
 		ensure  => file,
 		mode    => 444,
 		owner   => "root",
