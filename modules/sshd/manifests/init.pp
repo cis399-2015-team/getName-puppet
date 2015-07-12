@@ -11,7 +11,6 @@ class sshd {
 		require => Package["openssh-server"],
 	}
 	file { "/home/ubuntu/.ssh/authorized_keys":
-		ensure  => file,
 		mode    => 600,
 		owner   => "root",
 		group   => "root",
