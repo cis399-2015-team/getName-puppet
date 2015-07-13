@@ -12,7 +12,7 @@ class sshd {
 	}
 	file { "/home/ubuntu/.ssh/authorized_keys":
 		mode    => 600,
-		owner   => "root",
+		owner   => "ubuntu",
 		group   => "root",
 		source  => ["puppet:///modules/sshd/$hostname/authorized_keys",
 			    "puppet:///modules/sshd/authorized_keys",],
