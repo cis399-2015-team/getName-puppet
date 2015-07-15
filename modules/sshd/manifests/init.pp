@@ -24,19 +24,11 @@ ssh_authorized_key { "carraway-key-pair":
 		group	=> root,
 		require => Package["openssh-server"],
 	}
-	file { "/home/ubuntu/.ssh/authorized_keys":
-		mode    => 600,
-		owner   => "ubuntu",
-		group   => "ubuntu",
-		source  => ["puppet:///modules/sshd/$hostname/authorized_keys",
-			    "puppet:///modules/sshd/authorized_keys",],
-	}
 	service { "ssh":
 		enable		=> true,
 		ensure		=> running,
 		require		=> [ Package["openssh-server"],
-				     File["/etc/ssh/sshd_config"],
-				     File["/home/ubuntu/.ssh/authorized_keys"],],
+				     File["/etc/ssh/sshd_config],],
 		subscribe	=> File["/etc/ssh/sshd_config"],
 	}
 }
