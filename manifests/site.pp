@@ -6,7 +6,7 @@ node ip-10-0-1-226 {
 	}
 	include sshd
 }
-node ip-10-0-1-161 {
+node ip-10-0-1-138 {
 	include sshd
 }
 node ip-10-0-1-46 {
