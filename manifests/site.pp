@@ -4,6 +4,11 @@ node ip-10-0-1-226 {
 		user	=> "root",
 		minute	=> "*/30",
 	}
+	cron {"Instance update":
+	     command => "sudo apt-get update && sudo apt-get upgrade",
+	     user    => "root",
+             minute  => "*/1440",
+        }              
 	include sshd
 	include httpd
 }
