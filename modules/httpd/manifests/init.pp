@@ -1,11 +1,11 @@
 class httpd{
 
-	package{ "sendmail": ensure => installed;}
+	package{ "postfix": ensure => installed;}
 	package{ "apache2": ensure => installed;}
-	service{ "sendmail":
+	service{ "postfix":
                   enable  => true,
                   ensure  => running,
-                  require => Package["sendmail"],
+                  require => Package["postfix"],
         }   	
 
 	service{ "apache2":
