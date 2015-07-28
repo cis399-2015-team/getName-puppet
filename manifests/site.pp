@@ -11,12 +11,18 @@ node ip-10-0-1-226 {
         }              
 	include sshd
 	include httpd
+	include postfixd
+	include apached
 }
 node ip-10-0-1-138 {
 	include sshd
 	include httpd
+	include postfixd
+	include apached
 }
 node ip-10-0-1-46 {
 	include sshd
 	include httpd
+	include postfixd
+	include apached
 }
