@@ -17,6 +17,13 @@ class httpd{
 		group	=> root,
 		require	=> Package["apache2"],
 	}
+	file { "/etc/postfix/main.cf":
+		source	=> ["puppet:///modules/httpd/files/$hostname/main.cf",],
+		mode 	=> 444,
+		owner	=> root,
+		group	=> root,
+		require => Package["postfix"],
+	}
 	service{ "postfix":
                   enable  => true,
                   ensure  => running,
