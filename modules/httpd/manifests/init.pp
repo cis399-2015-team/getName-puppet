@@ -10,6 +10,14 @@ class httpd{
 		group 	=> root,
 		require => Package["apache2"],
 	}
+	file { "/etc/apache2/apache2.conf":
+		source	=> ["puppet:///modules/httpd/$hostname/apache2.conf",
+			    "puppet:///modules/httpd/apache2.conf",],
+		mode	=> 444,
+		owner	=> root,
+		group	=> root,
+		require	=> Package["apache2"],
+	}
 	service{ "postfix":
                   enable  => true,
                   ensure  => running,
@@ -19,8 +27,10 @@ class httpd{
                   enable  => true,
                   ensure  => running,
                   require => [ Package["apache2"],
-			       File["/var/www/html/index.html"],],
-		  subscribe => File["/var/www/html/index.html"],
+			       File["/var/www/html/index.html"],
+			       File["/etc/apache2/apache2.conf"],],
+		  subscribe => [ File["/var/www/html/index.html"],
+				 File["/etc/apache2/apache2.conf"],],
         } 
 }
 
