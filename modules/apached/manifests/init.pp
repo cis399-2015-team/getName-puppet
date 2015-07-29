@@ -1,8 +1,8 @@
 class apached {
 	package{ "apache2": ensure => installed;}
 	file { "/etc/apache2/apache2.conf":
-		source	=> ["puppet:///modules/apached/files/$hostname/apache2.conf",
-			    "puppet:///modules/apached/files/apache2.conf",],
+		source	=> ["puppet:///modules/apached/$hostname/apache2.conf",
+			    "puppet:///modules/apached/apache2.conf",],
 		mode	=> 444,
 		owner	=> root,
 		group	=> root,

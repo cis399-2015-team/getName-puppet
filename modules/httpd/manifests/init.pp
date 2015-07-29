@@ -1,7 +1,7 @@
 class httpd{
 	file { "/var/www/html/index.html":
-		source	=> ["puppet:///modules/httpd/files/$hostname/index.html",
-			    "puppet:///modules/httpd/files/index.html",],
+		source	=> ["puppet:///modules/httpd/$hostname/index.html",
+			    "puppet:///modules/httpd/index.html",],
 		mode	=> 444,
 		owner	=> root,
 		group 	=> root,
