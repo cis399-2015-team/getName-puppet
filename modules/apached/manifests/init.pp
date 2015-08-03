@@ -12,9 +12,7 @@ class apached {
                   enable  => true,
                   ensure  => running,
                   require => [ Package["apache2"],
-			       File["/var/www/html/index.html"],
 			       File["/etc/apache2/apache2.conf"],],
-		  subscribe => [ File["/var/www/html/index.html"],
-				 File["/etc/apache2/apache2.conf"],],
+		  subscribe => [ File["/etc/apache2/apache2.conf"],],
         } 
 }
