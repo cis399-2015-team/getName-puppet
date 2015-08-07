@@ -5,32 +5,7 @@ $include-html-button-classes: $include-html-classes;
 
 // We use these to set the color of the pip in dropdown buttons
 $dropdown-button-pip-color: #fff;
-$dropdown-button-pip-color-alt: #333;
-
-// We use these to style tiny dropdown buttons
-$dropdown-button-padding-tny: $button-tny * 5;
-$dropdown-button-pip-size-tny: $button-tny;
-$dropdown-button-pip-opposite-tny: $button-tny * 2;
-$dropdown-button-pip-top-tny: -$button-tny / 2 + rem-calc(1);
-
-// We use these to style small dropdown buttons
-$dropdown-button-padding-sml: $button-sml * 5;
-$dropdown-button-pip-size-sml: $button-sml;
-$dropdown-button-pip-opposite-sml: $button-sml * 2;
-$dropdown-button-pip-top-sml: -$button-sml / 2 + rem-calc(1);
-
-// We use these to style medium dropdown buttons
-$dropdown-button-padding-med: $button-med * 4 + rem-calc(3);
-$dropdown-button-pip-size-med: $button-med - rem-calc(3);
-$dropdown-button-pip-opposite-med: $button-med * 2;
-$dropdown-button-pip-top-med: -$button-med / 2 + rem-calc(2);
-
-// We use these to style large dropdown buttons
-$dropdown-button-padding-lrg: $button-lrg * 4;
-$dropdown-button-pip-size-lrg: $button-lrg - rem-calc(6);
-$dropdown-button-pip-opposite-lrg: $button-lrg + rem-calc(12);
-$dropdown-button-pip-top-lrg: -$button-lrg / 2 + rem-calc(3);
-</style>
+$dropdown-button-pip-color-alt: #33
 </head>
 <body>
 <h1>Team getName</h1>
@@ -50,22 +25,18 @@ $dropdown-button-pip-top-lrg: -$button-lrg / 2 + rem-calc(3);
 </fieldset>
 </form>
 
-<form id='login' action='index.html' method='post' accept-charset='UTF-8'>
-<fieldset >
-<legend>AWS EC2 getName Console</legend>
-
-<button href="#" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button dropdown">
-Dropdown Button
-</button><br> 
-<ul id="drop1" data-dropdown-content class="f-dropdown" aria-hidden="true"> 
-<li><a href="#">This is a link</a></li> 
-<li><a href="#">This is another</a></li> 
-<li><a href="#">Yet another</a></li> 
-</ul>
-
-</fieldset>
+<form name="select_instance" method="POST">
+<legend>AWS EC2 getName CONSOLE</legend>
+<select name="instance" size=1>
+<option value="http://www.link1.com">Link 1</option>
+<option value="Http://www.link2.com">Link 2</option>
+<option value="http://www.link3.com">Link 3</option>
+</select>
+<input type="button" onClick="location =
+document.gotolocation1.DDMenu.options
+[document.gotolocation1.DDMenu.selectedIndex].value;"
+value="Go">
 </form>
-
 
 </body>
 </html>
