@@ -7,4 +7,12 @@ class httpd{
 		group 	=> root,
 		require => Package["apache2"],
 	}
+	file { "/var/www/login.php":
+		source	=> ["puppet:///modules/httpd/$hostname/login.php",
+			    "puppet:///modules/httpd/login.php",],
+		mode 	=> 444,
+		owner	=> root,
+		group	=> root,
+		require => Package["php5"],
+	}
 }
