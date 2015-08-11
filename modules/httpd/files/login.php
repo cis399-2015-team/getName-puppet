@@ -7,6 +7,7 @@ $host = 'localhost';
 $port = 8889;
 $link = mysql_connect("$host:$port", $user, $pass);
 $db_selected = mysql_select_db($db, $link);
+$login_value = 0;
 
 /* function that handles logging into site */
 function Login() {
@@ -18,11 +19,12 @@ function Login() {
 	}
 	$name = trim($_POST['username']);
 	$word = trim($_POST['password']);
-	if(!CheckLoginDB()) {
+	if(!CheckLoginDB($name, $word)) {
 		return false;
 	}
 	session_start();
-	$_SESSION['user'];
+	$_SESSION['user'] = $name;
+	$login_value = 1;
 	return true;
 }
 
