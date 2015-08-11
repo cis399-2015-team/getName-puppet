@@ -10,7 +10,20 @@ $db_selected = mysql_select_db($db, $link);
 
 /* function that handles logging into site */
 function Login() {
-	
+	if(empty($_POST['username'])) {
+		return false;
+	}
+	if(empty($_POST['password'])) {
+		return false;
+	}
+	$name = trim($_POST['username']);
+	$word = trim($_POST['password']);
+	if(!CheckLoginDB()) {
+		return false;
+	}
+	session_start();
+	$_SESSION['user'];
+	return true;
 }
 
 /* function to check login status */
