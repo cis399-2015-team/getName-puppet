@@ -6,13 +6,12 @@ $user = 'root';
 $pass = 'getName399';
 $db = 'php';
 
-$link = mysql_connect('localhost', $user, $pass);
-$db_selected = mysql_select_db($db, $link) or die (mysql_error());
-echo $db_selected;
+$link = mysql_connect('localhost:2098', $user, $pass);
+echo $link;
 
 /* function to check login credentials against DB */
 function CheckLoginDB($name, $word) {
-	if(!$db_selected) { 
+	if(!mysql_select_db($db, $link)) { 
 		/* Return false if DB connection fails */
 		echo 4; return false;
 	}
