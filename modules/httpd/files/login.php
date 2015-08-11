@@ -33,9 +33,9 @@ function Login() {
 
 /* function to check login status */
 function CheckLogin($name, $word) {
-	if(md5($name) === $uname && md5($word) === $pword) {
+	if($name===$u && $word===$n) {
 		return true;
-	} return false;
+	} else return false;
 }
 
 /* function to check login credentials against DB */
