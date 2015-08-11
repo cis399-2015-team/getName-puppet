@@ -12,6 +12,7 @@ require_once("../login.php");
 
 <body>
 <h1>Team getName</h1>
+
 <?php
 	if(empty($_POST['submitted']) || empty($_POST['username'])) {
 		echo "<form id='login' action='index.php' method='post' accept-charset='UTF-8'>" .
@@ -27,7 +28,7 @@ require_once("../login.php");
 		"</form>";
 	}
 
-	if($login_value && $_POST['submitted']==1) {
+	if($login_value && $_POST['submitted']) {
 		echo "<form name='select_instance' action='index.php' method='POST'>" .
 		"<fieldset>" .
 		"<legend>AWS EC2 getName CONSOLE</legend>" .
@@ -43,7 +44,7 @@ require_once("../login.php");
 		"</form>";
 	}
 
-	if(!$login_value) {
+	if(!$login_value && $_POST['submitted']) {
 		echo "<img src='deny.jpg' alt='Access Denied' >";
 	}
 ?>
