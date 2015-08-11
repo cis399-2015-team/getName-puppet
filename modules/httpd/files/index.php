@@ -12,7 +12,7 @@ include("../login.php");
 <h1>Team getName</h1>
 
 <?php
-	if(!CheckLogin($_POST['username'], $_POST['password'])) {
+	if(!CheckLogin()) {
 		echo "<form id='login' action='index.php' method='post' accept-charset='UTF-8'>" .
 		"<fieldset >" .
 		"<legend>Login</legend>" .
@@ -26,7 +26,7 @@ include("../login.php");
 		"</form>";
 	}
 
-	if(CheckLogin($_POST['username'], $_POST['password']) && $_POST['submitted']) {
+	if(CheckLogin() && $_POST['submitted']) {
 		echo "<form name='select_instance' action='index.php' method='POST'>" .
 		"<fieldset>" .
 		"<legend>AWS EC2 getName CONSOLE</legend>" .
@@ -42,7 +42,7 @@ include("../login.php");
 		"</form>";
 	}
 
-	if(!CheckLogin($_POST['username'], $_POST['password']) && $_POST['submitted']) {
+	if(!CheckLogin() && $_POST['submitted']) {
 		echo "<img src='deny.jpg' alt='Access Denied' >";
 	}
 ?>
