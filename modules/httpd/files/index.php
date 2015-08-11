@@ -2,8 +2,6 @@
 
 include("../login.php");
 
-$login_flag = CheckLogin($_POST['username'], $_POST['password']);
-
 ?>
 <html>
 <head>
@@ -14,7 +12,7 @@ $login_flag = CheckLogin($_POST['username'], $_POST['password']);
 <h1>Team getName</h1>
 
 <?php
-	if(!$login_flag) {
+	if(!CheckLogin($_POST['username'], $_POST['password'])) {
 		echo "<form id='login' action='index.php' method='post' accept-charset='UTF-8'>" .
 		"<fieldset >" .
 		"<legend>Login</legend>" .
@@ -28,7 +26,7 @@ $login_flag = CheckLogin($_POST['username'], $_POST['password']);
 		"</form>";
 	}
 
-	if($login_flag && $_POST['submitted']) {
+	if(CheckLogin($_POST['username'], $_POST['password']) && $_POST['submitted']) {
 		echo "<form name='select_instance' action='index.php' method='POST'>" .
 		"<fieldset>" .
 		"<legend>AWS EC2 getName CONSOLE</legend>" .
@@ -44,7 +42,7 @@ $login_flag = CheckLogin($_POST['username'], $_POST['password']);
 		"</form>";
 	}
 
-	if(!$login_flag && $_POST['submitted']) {
+	if(!CheckLogin($_POST['username'], $_POST['password']) && $_POST['submitted']) {
 		echo "<img src='deny.jpg' alt='Access Denied' >";
 	}
 ?>
