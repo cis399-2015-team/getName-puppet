@@ -1,7 +1,7 @@
 <?php 
 
 include("../login.php");
-if(!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == ""){
+if(!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == "off"){
     $redirect = 'https://ec2-52-10-36-255.us-west-2.compute.amazonaws.com/';
     header("HTTP/1.1 301 Moved Permanently");
     header("Location: $redirect");
