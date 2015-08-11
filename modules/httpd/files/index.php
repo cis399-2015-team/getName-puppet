@@ -5,10 +5,8 @@
 $user = 'root';
 $pass = 'getName399';
 $db = 'php';
-$host = '127.0.0.1:2098';
-$port = 'mysql';
 
-$link = mysql_connect($host, $user, $pass);
+$link = mysql_connect('localhost', $user, $pass);
 $db_selected = mysql_select_db($db, $link);
 
 /* function to check login credentials against DB */
