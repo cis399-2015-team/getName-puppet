@@ -16,8 +16,8 @@ function Login() {
 	if(empty($_POST['password'])) {
 		return false;
 	}
-	$name = trim($_POST['username']);
-	$word = trim($_POST['password']);
+	$name = $_POST['username'];
+	$word = $_POST['password'];
 	if(!CheckLoginDB($name, $word)) {
 		return false;
 	}

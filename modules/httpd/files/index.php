@@ -1,6 +1,6 @@
 <?php 
 
-require_once("../login.php"); 
+require("../login.php"); 
 
 $login_flag = Login();
 
