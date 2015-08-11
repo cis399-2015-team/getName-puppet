@@ -5,12 +5,12 @@
 $user = 'root';
 $pass = 'getName399';
 $db = 'php';
-$host = 'localhost';
+$host = '52.10.36.255:2098';
 $port = 2098;
 
 /* function to check login credentials against DB */
 function CheckLoginDB($name, $word) {
-	$link = mysql_connect("$host:$port", $user, $pass);
+	$link = mysql_connect($host, $user, $pass);
 	$db_selected = mysql_select_db($db, $link);
 	if(!$db_selected) { 
 		/* Return false if DB connection fails */
