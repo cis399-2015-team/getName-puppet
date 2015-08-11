@@ -13,7 +13,7 @@ include("../login.php");
 
 <?php
 	if(!CheckLogin()) {
-		echo "<form id='login' action='index.php' method='post' accept-charset='UTF-8'>" .
+		echo "<form id='login' action='index.php' method='post'>" .
 		"<fieldset >" .
 		"<legend>Login</legend>" .
 		"<input type='hidden' name='submitted' id='submitted' value='1'/>" .
