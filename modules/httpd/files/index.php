@@ -13,8 +13,9 @@ include("../login.php");
 
 <?php
 	if(!CheckLogin()) {
-		echo "<form id='login' action='index.php' method='post'>" .
-		"<fieldset >" .
+		echo "<form id='login' " .
+		"action='https://getName-lb-660433534.us-west-2.elb.amazonaws.com' " .
+		"method='post'>" . "<fieldset >" .
 		"<legend>Login</legend>" .
 		"<input type='hidden' name='submitted' id='submitted' value='1'/>" .
 		"<label for='username' >UserName*:</label>" .
