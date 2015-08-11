@@ -47,6 +47,8 @@ function Login() {
 echo mysql_error();
 $login_flag = Login();
 
+mysql_close($link);
+
 ?>
 <html>
 <head>
