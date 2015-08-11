@@ -18,8 +18,8 @@ function Login() {
 	if(empty($_POST['password'])) {
 		return false; echo 2;
 	}
-	$n = $_POST['username'];
-	$w = $_POST['password'];
+	$n = md5($_POST['username']);
+	$w = md5($_POST['password']);
 	if(!CheckLoginDB($n, $w)) {
 		return false; echo 3;
 	}
