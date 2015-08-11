@@ -44,6 +44,7 @@ function Login() {
 	return true;
 }
 
+echo mysql_error();
 $login_flag = Login();
 
 ?>
