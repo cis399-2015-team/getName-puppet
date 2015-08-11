@@ -2,6 +2,8 @@
 
 require_once("../login.php"); 
 
+$login_flag = Login();
+
 ?>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -14,7 +16,7 @@ require_once("../login.php");
 <h1>Team getName</h1>
 
 <?php
-	if(empty($_POST['submitted']) || empty($_POST['username'])) {
+	if(!$login_flag) {
 		echo "<form id='login' action='index.php' method='post' accept-charset='UTF-8'>" .
 		"<fieldset >" .
 		"<legend>Login</legend>" .
@@ -28,7 +30,7 @@ require_once("../login.php");
 		"</form>";
 	}
 
-	if($login_value && $_POST['submitted']) {
+	if($login_flag && $_POST['submitted']) {
 		echo "<form name='select_instance' action='index.php' method='POST'>" .
 		"<fieldset>" .
 		"<legend>AWS EC2 getName CONSOLE</legend>" .
@@ -44,7 +46,7 @@ require_once("../login.php");
 		"</form>";
 	}
 
-	if(!$login_value && $_POST['submitted']) {
+	if(!$login_flag && $_POST['submitted']) {
 		echo "<img src='deny.jpg' alt='Access Denied' >";
 	}
 ?>

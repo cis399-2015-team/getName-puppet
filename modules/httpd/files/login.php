@@ -7,7 +7,6 @@ $host = 'localhost';
 $port = 8889;
 $link = mysql_connect("$host:$port", $user, $pass);
 $db_selected = mysql_select_db($db, $link);
-$login_value = 0;
 
 /* function that handles logging into site */
 function Login() {
