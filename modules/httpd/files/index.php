@@ -1,13 +1,55 @@
 <?php 
 
-require("../login.php"); 
+/* require("../login.php"); */
+
+$user = 'root';
+$pass = 'getName399';
+$db = 'php';
+$host = 'localhost';
+$port = 2098;
+$link = mysql_connect("$host:$port", $user, $pass);
+$db_selected = mysql_select_db($db, $link);
+
+/* function that handles logging into site */
+function Login() {
+	if(empty($_POST['username'])) {
+		return false; echo 1;
+	}
+	if(empty($_POST['password'])) {
+		return false; echo 2;
+	}
+	$n = $_POST['username'];
+	$w = $_POST['password'];
+	if(!CheckLoginDB($n, $w)) {
+		return false; echo 3;
+	}
+	return true;
+}
+
+/* function to check login credentials against DB */
+function CheckLoginDB($name, $word) {
+	if(!$db_selected) { 
+		/* Return false if DB connection fails */
+		return false; echo 4;
+	}
+	/* if connection if fine, query for the requested user */
+	$qry = "SELECT username, password FROM user ".
+		   "WHERE username='$name' AND password='$word' ";
+	$result = mysql_query($qry, $link);
+	/* test user's authorization against DB */
+	if(!$result || mysql_num_rows($result) <= 0) {
+		/* return false if verification fails */
+		return false; echo 5;
+	}
+	/* user is verified if they exist in DB */
+	return true;
+}
 
 $login_flag = Login();
 
 ?>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-
+<html>
 <head>
 <title>Team getName EC2/AWS Management Console</title>
 </head>
