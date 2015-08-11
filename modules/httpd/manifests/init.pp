@@ -5,7 +5,6 @@ class httpd{
 		mode	=> 444,
 		owner	=> root,
 		group 	=> root,
-		require => Package["php5"],
 	}
 	file { "/var/www/html/deny.jpg":
 		source	=> ["puppet:///modules/httpd/$hostname/deny.jpg",
