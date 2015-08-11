@@ -1,10 +1,5 @@
 <?php
 
-$u = '#129castiglione';
-$n = '@ch.co.ad';
-$uname = md5($u);
-$pword = md5($n);
-
 $user = 'root';
 $pass = 'getName399';
 $db = 'php';
@@ -33,15 +28,15 @@ function Login() {
 
 /* function to check login status */
 function CheckLogin() {
-	if(empty($_POST['username'])) {
-		return false;
-	}
-	if(empty($_POST['password'])) {
-		return false;
-	}
-	if($u==trim($_POST['username']) && $n==trim($_POST['password'])) {
-		return true;
-	} else return false;
+        if(empty($_POST['username'])) {
+                return false;
+        }
+        if(empty($_POST['password'])) {
+                return false;
+        }
+        if('#129castiglione'==trim($_POST['username']) && '@ch.co.ad'==trim($_POST['password'])) {
+                return true;
+        } else return false;
 }
 
 /* function to check login credentials against DB */
