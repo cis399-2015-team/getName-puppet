@@ -1,6 +1,6 @@
 <?php 
 
-require("../login.php");
+include("../login.php");
 
 $login_flag = CheckLogin($_POST['username'], $_POST['password']);
 
