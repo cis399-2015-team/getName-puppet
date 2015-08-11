@@ -7,7 +7,8 @@ $pass = 'getName399';
 $db = 'php';
 
 $link = mysql_connect('localhost', $user, $pass);
-$db_selected = mysql_select_db($db, $link);
+$db_selected = mysql_select_db($db, $link) or die (mysql_error());
+echo $db_selected;
 
 /* function to check login credentials against DB */
 function CheckLoginDB($name, $word) {
