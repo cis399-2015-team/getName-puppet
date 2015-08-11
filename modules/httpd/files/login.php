@@ -4,7 +4,7 @@ $user = 'root';
 $pass = 'getName399';
 $db = 'php';
 $host = 'localhost';
-$port = 8889;
+$port = 2098;
 $link = mysql_connect("$host:$port", $user, $pass);
 $db_selected = mysql_select_db($db, $link);
 
