@@ -2,7 +2,7 @@
 
 require("../login.php");
 
-$login_flag = CheckLogin();
+$login_flag = Login();
 
 ?>
 <html>
