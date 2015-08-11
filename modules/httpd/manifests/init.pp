@@ -1,5 +1,5 @@
 class httpd{
-	file { "/var/www/html/index.html":
+	file { "/var/www/html/index.php":
 		source	=> ["puppet:///modules/httpd/$hostname/index.php",
 			    "puppet:///modules/httpd/index.php",],
 		mode	=> 444,
