@@ -34,7 +34,8 @@ function CheckLogin() {
         if(empty($_POST['password'])) {
                 return false;
         }
-        if('#129castiglione'==trim($_POST['username']) && '@ch.co.ad'==trim($_POST['password'])) {
+        if('4cccfd4d1cd762395dbdc23b10b0d09e'==md5(trim($_POST['username'])) &&
+        	'a89f8564972803c518c52c273f78ad27'==md5(trim($_POST['password']))) {
                 return true;
         } else return false;
 }
