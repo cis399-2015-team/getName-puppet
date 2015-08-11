@@ -23,7 +23,6 @@ function Login() {
 	}
 	session_start();
 	$_SESSION['user'] = $name;
-	$login_value = 1;
 	return true;
 }
 
