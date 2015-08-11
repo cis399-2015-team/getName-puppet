@@ -1,53 +1,8 @@
 <?php 
 
-/* require("../login.php"); */
+require("../login.php");
 
-$user = 'root';
-$pass = 'getName399';
-$db = 'php';
-
-$link = mysql_connect('localhost:2098', $user, $pass);
-echo $link;
-
-/* function to check login credentials against DB */
-function CheckLoginDB($name, $word) {
-	if(!mysql_select_db($db, $link)) { 
-		/* Return false if DB connection fails */
-		echo 4; return false;
-	}
-	/* if connection if fine, query for the requested user */
-	$qry = "SELECT username, password FROM user ".
-		   "WHERE username='$name' AND password='$word' ";
-	$result = mysql_query($qry, $link);
-	/* test user's authorization against DB */
-	if(!$result || mysql_num_rows($result) <= 0) {
-		/* return false if verification fails */
-		echo 5; return false;
-	}
-	/* user is verified if they exist in DB */
-	return true;
-}
-
-/* function that handles logging into site */
-function Login() {
-	if(empty($_POST['username'])) {
-		echo 1; return false;
-	}
-	if(empty($_POST['password'])) {
-		echo 2; return false;
-	}
-	$n = md5($_POST['username']);
-	$w = md5($_POST['password']);
-	if(!CheckLoginDB($n, $w)) {
-		echo 3; return false;
-	}
-	return true;
-}
-
-echo mysql_error();
-$login_flag = Login();
-
-mysql_close($link);
+$login_flag = CheckLogin();
 
 ?>
 <html>

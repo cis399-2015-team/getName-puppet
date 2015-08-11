@@ -1,5 +1,10 @@
 <?php
 
+$u = '#129castiglione';
+$n = '@ch.co.ad';
+$uname = md5($u);
+$pword = md5($n);
+
 $user = 'root';
 $pass = 'getName399';
 $db = 'php';
@@ -27,8 +32,10 @@ function Login() {
 }
 
 /* function to check login status */
-function CheckLogin() {
-	
+function CheckLogin($name, $word) {
+	if($name == $uname && $word == $pword) {
+		return true;
+	} return false;
 }
 
 /* function to check login credentials against DB */
