@@ -7,8 +7,6 @@ $pass = 'getName399';
 $db = 'php';
 $host = 'localhost';
 $port = 2098;
-$link = mysql_connect("$host:$port", $user, $pass);
-$db_selected = mysql_select_db($db, $link);
 
 /* function that handles logging into site */
 function Login() {
@@ -28,6 +26,8 @@ function Login() {
 
 /* function to check login credentials against DB */
 function CheckLoginDB($name, $word) {
+	$link = mysql_connect("$host:$port", $user, $pass);
+	$db_selected = mysql_select_db($db, $link);
 	if(!$db_selected) { 
 		/* Return false if DB connection fails */
 		echo 4; return false;
