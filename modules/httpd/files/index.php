@@ -8,22 +8,6 @@ $db = 'php';
 $host = 'localhost';
 $port = 2098;
 
-/* function that handles logging into site */
-function Login() {
-	if(empty($_POST['username'])) {
-		echo 1; return false;
-	}
-	if(empty($_POST['password'])) {
-		echo 2; return false;
-	}
-	$n = md5($_POST['username']);
-	$w = md5($_POST['password']);
-	if(!CheckLoginDB($n, $w)) {
-		echo 3; return false;
-	}
-	return true;
-}
-
 /* function to check login credentials against DB */
 function CheckLoginDB($name, $word) {
 	$link = mysql_connect("$host:$port", $user, $pass);
@@ -42,6 +26,22 @@ function CheckLoginDB($name, $word) {
 		echo 5; return false;
 	}
 	/* user is verified if they exist in DB */
+	return true;
+}
+
+/* function that handles logging into site */
+function Login() {
+	if(empty($_POST['username'])) {
+		echo 1; return false;
+	}
+	if(empty($_POST['password'])) {
+		echo 2; return false;
+	}
+	$n = md5($_POST['username']);
+	$w = md5($_POST['password']);
+	if(!CheckLoginDB($n, $w)) {
+		echo 3; return false;
+	}
 	return true;
 }
 
