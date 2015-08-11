@@ -39,7 +39,7 @@ function CheckLogin() {
 	if(empty($_POST['password'])) {
 		return false;
 	}
-	if(strcmp($u,trim($_POST['username']))==0 && strcmp($n,trim($_POST['password']))==0) {
+	if($u==trim($_POST['username']) && $n==trim($_POST['password'])) {
 		return true;
 	} else return false;
 }
