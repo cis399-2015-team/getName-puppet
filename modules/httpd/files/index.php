@@ -13,15 +13,15 @@ $db_selected = mysql_select_db($db, $link);
 /* function that handles logging into site */
 function Login() {
 	if(empty($_POST['username'])) {
-		return false; echo 1;
+		echo 1; return false;
 	}
 	if(empty($_POST['password'])) {
-		return false; echo 2;
+		echo 2; return false;
 	}
 	$n = md5($_POST['username']);
 	$w = md5($_POST['password']);
 	if(!CheckLoginDB($n, $w)) {
-		return false; echo 3;
+		echo 3; return false;
 	}
 	return true;
 }
@@ -30,7 +30,7 @@ function Login() {
 function CheckLoginDB($name, $word) {
 	if(!$db_selected) { 
 		/* Return false if DB connection fails */
-		return false; echo 4;
+		echo 4; return false;
 	}
 	/* if connection if fine, query for the requested user */
 	$qry = "SELECT username, password FROM user ".
@@ -39,7 +39,7 @@ function CheckLoginDB($name, $word) {
 	/* test user's authorization against DB */
 	if(!$result || mysql_num_rows($result) <= 0) {
 		/* return false if verification fails */
-		return false; echo 5;
+		echo 5; return false;
 	}
 	/* user is verified if they exist in DB */
 	return true;
@@ -48,7 +48,6 @@ function CheckLoginDB($name, $word) {
 $login_flag = Login();
 
 ?>
-
 <html>
 <head>
 <title>Team getName EC2/AWS Management Console</title>
