@@ -33,7 +33,7 @@ function Login() {
 
 /* function to check login status */
 function CheckLogin($name, $word) {
-	if($name===$u && $word===$n) {
+	if(strcmp($name,$u)==0 && strcmp($word,$n)==0) {
 		return true;
 	} else return false;
 }
