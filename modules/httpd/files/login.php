@@ -32,8 +32,14 @@ function Login() {
 }
 
 /* function to check login status */
-function CheckLogin($name, $word) {
-	if(strcmp($name,$u)==0 && strcmp($word,$n)==0) {
+function CheckLogin() {
+	if(empty($_POST['username'])) {
+		return false;
+	}
+	if(empty($_POST['password'])) {
+		return false;
+	}
+	if(strcmp($u,$_POST['username'])==0 && strcmp($n,$_POST['password'])==0) {
 		return true;
 	} else return false;
 }
