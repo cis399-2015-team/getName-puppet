@@ -2,7 +2,6 @@
 
 require("vendor/autoload.php");
 
-use Aws\Ec2\Ec2Client;
 
 $client = Ec2Client::factory(array(
 	'key'		=> 'AKIAJWGYRUM6WG7AZ2QQ',
