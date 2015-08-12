@@ -6,7 +6,7 @@ require("vendor/autoload.php");
 $options = array(
 	'key'		=> 'AKIAJWGYRUM6WG7AZ2QQ',
 	'secret'	=> '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'
-));
+);
 
 /* function to check login status */
 function CheckLogin() {
