@@ -1,30 +1,14 @@
 <?php
 
-$user = 'root';
-$pass = 'getName399';
-$db = 'php';
-$host = 'localhost';
-$port = 2098;
-$link = mysql_connect("$host:$port", $user, $pass);
-$db_selected = mysql_select_db($db, $link);
+require("vendor/autoload.php");
 
-/* function that handles logging into site */
-function Login() {
-	if(empty($_POST['username'])) {
-		return false;
-	}
-	if(empty($_POST['password'])) {
-		return false;
-	}
-	$name = $_POST['username'];
-	$word = $_POST['password'];
-	if(!CheckLoginDB($name, $word)) {
-		return false;
-	}
-	session_start();
-	$_SESSION['user'] = $name;
-	return true;
-}
+use Aws\Ec2\Ec2Client;
+
+$client = Ec2Client::factory(array(
+	'key'		=> 'AKIAJWGYRUM6WG7AZ2QQ',
+	'secret'	=> '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',
+	'region'	=> 'us-west-2'
+));
 
 /* function to check login status */
 function CheckLogin() {
@@ -40,25 +24,32 @@ function CheckLogin() {
         } else return false;
 }
 
-/* function to check login credentials against DB */
-function CheckLoginDB($name, $word) {
-	if(!$db_selected) { 
-		/* Return false if DB connection fails */
-		return false; 
-	}
-	
-	/* if connection if fine, query for the requested user */
-	$qry = "SELECT username, password FROM user ".
-		   "WHERE username='$name' AND password='$word' ";
-	$result = mysql_query($qry, $link);
-	
-	/* test user's authorization against DB */
-	if(!$result || mysql_num_rows($result) <= 0) {
-		/* return false if verification fails */
+/* function to stop a specific instance */
+function StopInstance($instance_id) {
+	$response = $client->stopInstances(array(
+		'InstanceIds' => array($instance_id)
+	));
+	if(!$response->isOK()) {
+		return false;
+	} else return true;
+}
+
+function StartInstance($instance_id) {
+	$response = $client->startInstances(array(
+		'InstanceIds' => array($instance_id)
+	));
+	if(!$response->isOK()) {
+		return false;
+	} else return true;
+}
+
+function RestartInstance($instance_id) {
+	if(!StopInstance($instance_id)) {
 		return false;
 	}
-	
-	/* user is verified if they exist in DB */
+	if(!StartInstance($instance_id)) {
+		return false;
+	}
 	return true;
 }
 
