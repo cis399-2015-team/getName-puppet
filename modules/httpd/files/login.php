@@ -3,10 +3,9 @@
 require("vendor/autoload.php");
 
 
-$client = Ec2Client::factory(array(
+$options = array(
 	'key'		=> 'AKIAJWGYRUM6WG7AZ2QQ',
-	'secret'	=> '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',
-	'region'	=> 'us-west-2'
+	'secret'	=> 'hQDJtV9yX27YNwNC5TWfXD1Rt07ZT5EHO3cn6+xA'
 ));
 
 /* function to check login status */
@@ -25,23 +24,23 @@ function CheckLogin() {
 
 /* function to stop a specific instance */
 function StopInstance($instance_id) {
-	$response = $client->stopInstances(array(
-		'InstanceIds' => array($instance_id)
-	));
+	$ec2 = new AmazonEC2($options);
+	$response = $ec2->stopInstances($instance_id);
 	if(!$response->isOK()) {
 		return false;
 	} else return true;
 }
 
+/* function to start a specific instance */
 function StartInstance($instance_id) {
-	$response = $client->startInstances(array(
-		'InstanceIds' => array($instance_id)
-	));
+	$ec2 = new AmazonEC2($options);
+	$response = $ec2->startInstances($instance_id);
 	if(!$response->isOK()) {
 		return false;
 	} else return true;
 }
 
+/* function to restart a specific instance */
 function RestartInstance($instance_id) {
 	if(!StopInstance($instance_id)) {
 		return false;
