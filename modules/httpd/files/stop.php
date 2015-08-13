@@ -1,11 +1,11 @@
 <?php 
 /* need to have the AWS EC2 SDK for PHP */
-require("../vendor/autoload.php");
+//require("../vendor/autoload.php");
 
-use Aws\Ec2\Ec2Client;
+//use Aws\Ec2\Ec2Client;
 
 $loc = 'https://ec2-52-10-36-255.us-west-2.compute.amazonaws.com/stop.php';
-$region = 'us-west-2';
+//$region = 'us-west-2';
 
 session_start();
 
