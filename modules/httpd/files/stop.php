@@ -4,12 +4,14 @@ include("../login.php");
 
 $loc = 'https://ec2-52-10-36-255.us-west-2.compute.amazonaws.com/stop.php';
 
+session_start();
+
 ?>
 
 <html>
 <head>
 <title>Stop EC2 Instance</title>
-<head>
+</head>
 
 
 <body>

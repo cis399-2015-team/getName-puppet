@@ -13,6 +13,8 @@ if(!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == "off"){
     exit();
 }
 
+session_start();
+
 /* route to execution page if command is sent */
 if($_POST['stop']) {
 	$_SESSION['instance'] = $_POST['instance'];
