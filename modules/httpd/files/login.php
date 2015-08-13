@@ -1,7 +1,11 @@
 <?php
 
+$region = 'us-west-2';
+
 /* need to have the AWS EC2 SDK for PHP */
 require("vendor/autoload.php");
+
+use Aws\Ec2\Ec2Client;
 
 /* function to check login status */
 function CheckLogin() {
@@ -20,12 +24,15 @@ function CheckLogin() {
 
 /* function to stop a specific instance */
 function StopInstance($id, $key, $secret) {
-	$options = array(
-		'key' => $key,
-		'secret' => $secret,
+	$client = Ec2Client::factory(array(
+		'key' => "$key",
+		'secret' => "$secret",
+		'region' => "$region",
 	);
-	$ec2 = new AmazonEC2();
-	$response = $ec2->stop_instances($id);
+	$response = $client->stopInstances(array(
+		'InstanceIds' => array($id,),
+		'DryRun' => false,
+	));
 	if(!$response->isOK()) {
 		//if error
 		return false;
