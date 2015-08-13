@@ -33,8 +33,8 @@ session_start();
 	} 
 	if($_POST['gonow']) {
 		$id = $_SESSION['instance'];
-		$command = "./button stop " . $id . " " . $region;
-		echo shell_exec($command);
+		$command = "sudo php ./button stop " . $id . " " . $region;
+		echo shell_exec("$command");
 	}
 ?>
 
