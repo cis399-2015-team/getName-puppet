@@ -20,25 +20,11 @@ class httpd{
 		owner	=> root,
 		group	=> root,
 	}
-	file { "/var/www/html/start.php":
-		source	=> ["puppet:///modules/httpd/$hostname/start.php",
-					"puppet:///modules/httpd/start.php",],
-		mode	=> 444,
-		owner	=> root,
-		group	=> root,
-	}
 	file { "/var/www/html/stop.php":
 		source	=> ["puppet:///modules/httpd/$hostname/stop.php",
 					"puppet:///modules/httpd/stop.php",],
 		mode	=> 444,
 		owner	=> root,
-		group	=> root,
-	}
-	file { "/var/www/html/restart.php":
-		source	=> ["puppet:///modules/httpd/$hostname/restart.php",
-					"puppet:///modules/httpd/restart.php",],
-		mode	=> 444,
-		owner	=> root, 
 		group	=> root,
 	}
 }
