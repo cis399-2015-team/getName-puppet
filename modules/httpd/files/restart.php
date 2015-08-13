@@ -15,11 +15,11 @@ session_start();
 
 
 <body>
-<h1>Restart Instance <?php echo $_POST['instance']; ?></h1>
+<h1>Restart Instance <?php echo $_SESSION['instance']; ?></h1>
 
 <?php
 	if($_POST['gonow']) {
-		$result = RestartInstance($_POST['instance'], trim($_POST['key']), trim($_POST['secret']);
+		$result = RestartInstance($_SESSION['instance'], trim($_POST['key']), trim($_POST['secret']);
 		echo $result;
 	} else {
 		echo "<form id='restart' action=$loc method='post'>" . 
