@@ -25,7 +25,8 @@ $loc = 'https://ec2-52-10-36-255.us-west-2.compute.amazonaws.com/stop.php';
 		"<input type='text' name='secret' id='secret' />" .
 		"<input type='submit' name='gonow' value='EXECUTE' />" .
 		"</fieldset></form>";
-	} else {
+	}
+	if($_POST['gonow']) {
 		$result = StopInstance($_SESSION['instance'], trim($_POST['key']), trim($_POST['secret']);
 		echo $result;
 	}
