@@ -1,8 +1,11 @@
 <?php 
+/* need to have the AWS EC2 SDK for PHP */
+require("vendor/autoload.php");
 
-include("../login.php");
+use Aws\Ec2\Ec2Client;
 
 $loc = 'https://ec2-52-10-36-255.us-west-2.compute.amazonaws.com/stop.php';
+$region = 'us-west-2';
 
 session_start();
 
@@ -15,7 +18,7 @@ session_start();
 
 
 <body>
-<h1>Stop Instance <?php echo $_SESSION['instance']; ?></h1>
+<h1>Stop Instance <?php echo "$_SESSION['instance']"; ?></h1>
 
 <?php
 	if(!$_POST['gonow']) {
@@ -29,8 +32,16 @@ session_start();
 		"</fieldset></form>";
 	} 
 	if($_POST['gonow']) {
-		StopInstance($_SESSION['instance']);
-		
+		$client = Ec2Client::factory(array(
+		'credentials' => ['key' => "$_POST['key']",
+					   'secret' => "$_POST['$secret']",],
+		'region' => "$region",
+		'version' => 'latest',
+		));
+		$response = $client->stopInstances(array(
+			'InstanceIds' => array($_SESSION['instance'],),
+			'DryRun' => false,
+		));
 	}
 ?>
 
