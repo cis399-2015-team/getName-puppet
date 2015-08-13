@@ -25,9 +25,10 @@ function CheckLogin() {
 /* function to stop a specific instance */
 function StopInstance($id, $key, $secret) {
 	$client = Ec2Client::factory(array(
-		'key' => "$key",
-		'secret' => "$secret",
+		'credentials' => ['key' => "$key",
+					   'secret' => "$secret",],
 		'region' => "$region",
+		'version' => 'latest',
 	));
 	$response = $client->stopInstances(array(
 		'InstanceIds' => array($id,),
@@ -38,16 +39,17 @@ function StopInstance($id, $key, $secret) {
 
 /* function to start a specific instance */
 function StartInstance($id, $key, $secret) {
-	$options = array(
-		'key' => $key,
-		'secret' => $secret,
-	);
-	$ec2 = new AmazonEC2();
-	$response = $ec2->startInstances($id);
-	if(!$response->isOK()) {
-		//if error
-		return false;
-	} else return true;
+	$client = Ec2Client::factory(array(
+		'credentials' => ['key' => "$key",
+					   'secret' => "$secret",],
+		'region' => "$region",
+		'version' => 'latest',
+	));
+	$response = $client->startInstances(array(
+		'InstanceIds' => array($id,),
+		'DryRun' => false,
+	));
+	return $response;
 }
 
 /* function to restart a specific instance */
