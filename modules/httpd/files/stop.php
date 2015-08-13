@@ -34,7 +34,7 @@ session_start();
 	if($_POST['gonow']) {
 		$id = $_SESSION['instance'];
 		$command = "sudo php ./button stop " . $id . " " . $region;
-		echo passthru($command);
+		echo shell_exec("ls");
 		echo 'error check';
 	}
 ?>
