@@ -29,7 +29,7 @@ session_start();
 		"</fieldset></form>";
 	} else {
 		$result = StopInstance($_SESSION['instance'], trim($_POST['key']), trim($_POST['secret']));
-		echo print_r($result);
+		echo $result;
 	}
 ?>
 
