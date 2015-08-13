@@ -5,7 +5,7 @@
 //use Aws\Ec2\Ec2Client;
 
 $loc = 'https://ec2-52-10-36-255.us-west-2.compute.amazonaws.com/stop.php';
-//$region = 'us-west-2';
+$region = 'us-west-2';
 
 session_start();
 
@@ -32,18 +32,8 @@ session_start();
 		"</fieldset></form>";
 	} 
 	if($_POST['gonow']) {
-		/*
-		$client = Ec2Client::factory(array(
-		'credentials' => ['key' => "$_POST['key']",
-					   'secret' => "$_POST['$secret']",],
-		'region' => "$region",
-		'version' => 'latest',
-		));
-		$response = $client->stopInstances(array(
-			'InstanceIds' => array($_SESSION['instance'],),
-			'DryRun' => false,
-		));
-		*/
+		$id = $_SESSION['instance'];
+		exec("sudo php ./button stop $id $region");
 		echo 'error check';
 	}
 ?>
