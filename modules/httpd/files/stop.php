@@ -27,8 +27,9 @@ session_start();
 		"<input type='text' name='secret' id='secret' />" .
 		"<input type='submit' name='gonow' value='EXECUTE' />" .
 		"</fieldset></form>";
-	} else {
-		StopInstance($_SESSION['instance'], trim($_POST['key']), trim($_POST['secret']));
+	} 
+	if($_POST['gonow']) {
+		StopInstance($_SESSION['instance']);
 		
 	}
 ?>

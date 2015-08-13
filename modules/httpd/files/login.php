@@ -23,10 +23,10 @@ function CheckLogin() {
 }
 
 /* function to stop a specific instance */
-function StopInstance($id, $key, $secret) {
+function StopInstance($id) {
 	$client = Ec2Client::factory(array(
-		'credentials' => ['key' => "$key",
-					   'secret' => "$secret",],
+		'credentials' => ['key' => $_POST['key'],
+					   'secret' => $_POST['$secret'],],
 		'region' => "$region",
 		'version' => 'latest',
 	));
