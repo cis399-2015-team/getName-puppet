@@ -15,14 +15,17 @@ if(!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == "off"){
 
 /* route to execution page if command is sent */
 if($_POST['stop']) {
+	$_SESSION['instance'] = $_POST['instance'];
 	header("Location: $loc1");
 	exit();
 }
 if($_POST['start']) {
+	$_SESSION['instance'] = $_POST['instance'];
 	header("Location: $loc2");
 	exit();
 }
 if($_POST['restart']) {
+	$_SESSION['instance'] = $_POST['instance'];
 	header("Location: $loc3");
 	exit();
 }

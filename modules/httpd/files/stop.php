@@ -13,11 +13,11 @@ $loc = 'https://ec2-52-10-36-255.us-west-2.compute.amazonaws.com/stop.php';
 
 
 <body>
-<h1>Stop Instance <?php echo $_POST['instance']; ?><h1>
+<h1>Stop Instance <?php echo $_SESSION['instance']; ?><h1>
 
 <?php
 	if($_POST['gonow']) {
-		$result = StopInstance($_POST['instance'], trim($_POST['key']), trim($_POST['secret']);
+		$result = StopInstance($_SESSION['instance'], trim($_POST['key']), trim($_POST['secret']);
 		echo $result;
 	} else {
 		echo "<form id='stop' action=$loc method='post'>" . 
