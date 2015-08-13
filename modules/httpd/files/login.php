@@ -2,9 +2,6 @@
 
 require("vendor/autoload.php");
 
-
-
-
 /* function to check login status */
 function CheckLogin() {
         if(empty($_POST['username'])) {
@@ -21,7 +18,7 @@ function CheckLogin() {
 
 /* function to stop a specific instance */
 function StopInstance($instance_id) {
-	$ec2 = new AmazonEC2($options);
+	$ec2 = new AmazonEC2();
 	$response = $ec2->stopInstances($instance_id);
 	if(!$response->isOK()) {
 		return false;
