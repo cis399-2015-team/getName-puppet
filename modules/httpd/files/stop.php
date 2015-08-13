@@ -1,6 +1,6 @@
 <?php 
 /* need to have the AWS EC2 SDK for PHP */
-require("vendor/autoload.php");
+require("../vendor/autoload.php");
 
 use Aws\Ec2\Ec2Client;
 
