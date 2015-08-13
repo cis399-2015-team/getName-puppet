@@ -24,7 +24,7 @@ function StopInstance($id, $key, $secret) {
 		'key' => $key,
 		'secret' => $secret,
 	);
-	$ec2 = new AmazonEC2($options);
+	$ec2 = new AmazonEC2();
 	$response = $ec2->stop_instances($id);
 	if(!$response->isOK()) {
 		//if error
@@ -38,7 +38,7 @@ function StartInstance($id, $key, $secret) {
 		'key' => $key,
 		'secret' => $secret,
 	);
-	$ec2 = new AmazonEC2($options);
+	$ec2 = new AmazonEC2();
 	$response = $ec2->start_instances($id);
 	if(!$response->isOK()) {
 		//if error
