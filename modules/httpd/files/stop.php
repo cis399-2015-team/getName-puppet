@@ -32,6 +32,7 @@ session_start();
 		"</fieldset></form>";
 	} 
 	if($_POST['gonow']) {
+		/*
 		$client = Ec2Client::factory(array(
 		'credentials' => ['key' => "$_POST['key']",
 					   'secret' => "$_POST['$secret']",],
@@ -42,6 +43,8 @@ session_start();
 			'InstanceIds' => array($_SESSION['instance'],),
 			'DryRun' => false,
 		));
+		*/
+		echo 'error check';
 	}
 ?>
 
