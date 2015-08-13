@@ -4,8 +4,8 @@ include("../login.php");
 
 $location = 'https://ec2-52-10-36-255.us-west-2.compute.amazonaws.com/';
 $loc1 = $location . "stop.php";
-$loc2 = $location . "start.php";
-$loc3 = $location . "restart.php";
+//$loc2 = $location . "start.php";
+//$loc3 = $location . "restart.php";
 
 /* route to a secure HTTPS connection, if not already */
 if(!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == "off"){
@@ -21,6 +21,7 @@ if($_POST['stop']) {
 	header("Location: $loc1");
 	exit();
 }
+/*
 if($_POST['start']) {
 	$_SESSION['instance'] = $_POST['instance'];
 	header("Location: $loc2");
@@ -31,6 +32,7 @@ if($_POST['restart']) {
 	header("Location: $loc3");
 	exit();
 }
+*/
 
 ?>
 
@@ -64,8 +66,8 @@ if($_POST['restart']) {
 		"<option value='i-ff820337'>i-ff820337</option>" .
 		"</select>" .
 		"<button type='submit' name='stop' value='stop instance'>STOP</button>" .
-		"<button type='submit' name='start' value='start instance'>START</button>" .
-		"<button type='submit' name='restart' value='restart instance'>RESTART</button>" .
+		/*"<button type='submit' name='start' value='start instance'>START</button>" .
+		"<button type='submit' name='restart' value='restart instance'>RESTART</button>" .*/
 		"</fieldset></form>";
 	}
 

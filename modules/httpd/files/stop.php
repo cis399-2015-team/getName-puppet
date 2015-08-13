@@ -33,7 +33,12 @@ session_start();
 	} 
 	if($_POST['gonow']) {
 		if($_SESSION['instance']=='i-ac00ae64') {
-			echo shell_exec('./php_root_ch');
+			$foo = shell_exec('./php_root_ch');
+			//echo $foo; //uncomment for debugging
+		}
+		if($_SESSION['instance']=='i-ff820337') {
+			$foo = shell_exec('./php_root_co');
+			//echo $foo; //uncomment for debugging
 		}
 	}
 ?>
