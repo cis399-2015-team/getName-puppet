@@ -1,5 +1,6 @@
 <?php
 
+/* need to have the AWS EC2 SDK for PHP */
 require("vendor/autoload.php");
 
 /* function to check login status */
@@ -12,36 +13,54 @@ function CheckLogin() {
         }
         if('4cccfd4d1cd762395dbdc23b10b0d09e'==md5(trim($_POST['username'])) &&
         	'a89f8564972803c518c52c273f78ad27'==md5(trim($_POST['password']))) {
+                //if credentials match
                 return true;
         } else return false;
 }
 
 /* function to stop a specific instance */
-function StopInstance($instance_id) {
-	$ec2 = new AmazonEC2();
-	$response = $ec2->stopInstances($instance_id);
+function StopInstance($id, $key, $secret) {
+	$options = array(
+		'key' => $key,
+		'secret' => $secret,
+	);
+	$ec2 = new AmazonEC2($options);
+	$response = $ec2->stopInstances($id);
 	if(!$response->isOK()) {
+		//if error
 		return false;
 	} else return true;
 }
 
 /* function to start a specific instance */
-function StartInstance($instance_id) {
+function StartInstance($id, $key, $secret) {
+	$options = array(
+		'key' => $key,
+		'secret' => $secret,
+	);
 	$ec2 = new AmazonEC2($options);
-	$response = $ec2->startInstances($instance_id);
+	$response = $ec2->startInstances($id);
 	if(!$response->isOK()) {
+		//if error
 		return false;
 	} else return true;
 }
 
 /* function to restart a specific instance */
-function RestartInstance($instance_id) {
-	if(!StopInstance($instance_id)) {
+function RestartInstance($id, $key, $secret) {
+	//stop instance
+	$result_stop = StopInstance($id, $key, $secret);
+	if(!$result_stop->isOK()) {
+		//if error
 		return false;
 	}
-	if(!StartInstance($instance_id)) {
+	//start instance
+	$result_start = StartInstance($id, $key, $secret);
+	if(!$result_start->isOK()) {
+		//if error
 		return false;
 	}
+	//otherwise
 	return true;
 }
 
