@@ -28,8 +28,8 @@ session_start();
 		"<input type='submit' name='gonow' value='EXECUTE' />" .
 		"</fieldset></form>";
 	} else {
-		$result = StopInstance($_SESSION['instance'], trim($_POST['key']), trim($_POST['secret']));
-		echo $result;
+		StopInstance($_SESSION['instance'], trim($_POST['key']), trim($_POST['secret']));
+		
 	}
 ?>
 

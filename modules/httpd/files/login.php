@@ -34,7 +34,6 @@ function StopInstance($id, $key, $secret) {
 		'InstanceIds' => array($id,),
 		'DryRun' => false,
 	));
-	return $response;
 }
 
 /* function to start a specific instance */
@@ -49,25 +48,15 @@ function StartInstance($id, $key, $secret) {
 		'InstanceIds' => array($id,),
 		'DryRun' => false,
 	));
-	return $response;
 }
 
 /* function to restart a specific instance */
 function RestartInstance($id, $key, $secret) {
 	//stop instance
 	$result_stop = StopInstance($id, $key, $secret);
-	if(!$result_stop->isOK()) {
-		//if error
-		return false;
-	}
+
 	//start instance
 	$result_start = StartInstance($id, $key, $secret);
-	if(!$result_start->isOK()) {
-		//if error
-		return false;
-	}
-	//otherwise
-	return true;
 }
 
 ?>
