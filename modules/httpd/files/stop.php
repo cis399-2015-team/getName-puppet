@@ -33,7 +33,8 @@ session_start();
 	} 
 	if($_POST['gonow']) {
 		$id = $_SESSION['instance'];
-		exec("sudo php ./button stop $id $region");
+		$command = "sudo php ./button stop " . $id . $region;
+		exec($command);
 		echo 'error check';
 	}
 ?>
