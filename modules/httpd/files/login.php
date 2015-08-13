@@ -1,6 +1,6 @@
 <?php
 
-$region = 'us-west-2c';
+$region = 'us-west-2';
 
 /* need to have the AWS EC2 SDK for PHP */
 require("vendor/autoload.php");
@@ -33,10 +33,7 @@ function StopInstance($id, $key, $secret) {
 		'InstanceIds' => array($id,),
 		'DryRun' => false,
 	));
-	if(!$response->isOK()) {
-		//if error
-		return false;
-	} else return true;
+	return $response;
 }
 
 /* function to start a specific instance */
@@ -46,7 +43,7 @@ function StartInstance($id, $key, $secret) {
 		'secret' => $secret,
 	);
 	$ec2 = new AmazonEC2();
-	$response = $ec2->start_instances($id);
+	$response = $ec2->startInstances($id);
 	if(!$response->isOK()) {
 		//if error
 		return false;
