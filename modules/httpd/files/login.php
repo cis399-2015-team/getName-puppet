@@ -1,6 +1,6 @@
 <?php
 
-$region = 'us-west-2';
+$region = 'us-west-2c';
 
 /* need to have the AWS EC2 SDK for PHP */
 require("vendor/autoload.php");
