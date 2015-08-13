@@ -18,10 +18,7 @@ session_start();
 <h1>Start Instance <?php echo $_SESSION['instance']; ?></h1>
 
 <?php
-	if($_POST['gonow']) {
-		$result = StartInstance($_SESSION['instance'], trim($_POST['key']), trim($_POST['secret']);
-		echo $result;
-	} else {
+	if(!$_POST['gonow']) {
 		echo "<form id='start' action=$loc method='post'>" . 
 		"<fieldset ><legend>Enter Credentials</legend>" .
 		"<label for='key' >KEY*:</label>" .
