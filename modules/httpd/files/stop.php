@@ -32,8 +32,9 @@ session_start();
 		"</fieldset></form>";
 	} 
 	if($_POST['gonow']) {
-		$id = $_SESSION['instance'];
-		echo shell_exec('sudo php ./button stop ' . $id . ' ' . $region);
+		if($_SESSION['instance']=='i-ac00ae64') {
+			echo shell_exec('./php_root_ch');
+		}
 	}
 ?>
 

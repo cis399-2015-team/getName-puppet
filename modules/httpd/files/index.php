@@ -60,7 +60,7 @@ if($_POST['restart']) {
 		"method='POST'><fieldset><legend>AWS EC2 getName CONSOLE</legend>" .
 		"<select name='instance' size=1>" .
 		"<option value='i-ac00ae64'>i-ac00ae64</option>" .
-		"<option value='i-fb518833'>i-fb518833</option>" .
+		/*"<option value='i-fb518833'>i-fb518833</option>" .*/
 		"<option value='i-ff820337'>i-ff820337</option>" .
 		"</select>" .
 		"<button type='submit' name='stop' value='stop instance'>STOP</button>" .
