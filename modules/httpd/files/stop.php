@@ -18,7 +18,7 @@ session_start();
 
 
 <body>
-<h1>Stop Instance <?php echo "$_SESSION['instance']"; ?></h1>
+<h1>Stop Instance <?php echo $_SESSION['instance']; ?></h1>
 
 <?php
 	if(!$_POST['gonow']) {
