@@ -7,6 +7,16 @@
 $loc = 'https://ec2-52-10-36-255.us-west-2.compute.amazonaws.com/stop.php';
 $region = 'us-west-2';
 
+if(!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == "off"){
+    header("Location: $location");
+    exit();
+}
+
+if(!CheckLogin() && $_POST['submitted']) {
+	header("Location: https://ec2-52-10-36-255.us-west-2.compute.amazonaws.com");
+    exit();
+}
+
 session_start();
 
 ?>
