@@ -7,13 +7,16 @@
 $loc = 'https://ec2-52-10-36-255.us-west-2.compute.amazonaws.com/stop.php';
 $region = 'us-west-2';
 
+//Reroutes user to encrypted page
 if(!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == "off"){
     header("Location: $location");
     exit();
 }
 
+//Resuming session from previous page
 session_start();
 
+//Sends users to login page if they are not already logged in
 if(!isset($_SESSION['submitted'])) {
 	header("Location: https://ec2-52-10-36-255.us-west-2.compute.amazonaws.com");
     exit();
@@ -31,6 +34,7 @@ if(!isset($_SESSION['submitted'])) {
 <h1>Stop Instance <?php echo $_SESSION['instance']; ?></h1>
 
 <?php
+//Enter key and secret key
 	if(!$_POST['gonow']) {
 		echo "<form id='stop' action=$loc method='post'>" . 
 		"<fieldset ><legend>Enter Credentials</legend>" .
@@ -41,6 +45,7 @@ if(!isset($_SESSION['submitted'])) {
 		"<input type='submit' name='gonow' value='EXECUTE' />" .
 		"</fieldset></form>";
 	} 
+//Checking to determing which instance was selected
 	if($_POST['gonow']) {
 		if($_SESSION['instance']=='i-ac00ae64') {
 			$foo = shell_exec('./php_root_ch');

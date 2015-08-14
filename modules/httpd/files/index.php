@@ -1,7 +1,10 @@
 <?php 
 
+//Login verification
 include("../login.php");
 
+
+//URL location
 $location = 'https://ec2-52-10-36-255.us-west-2.compute.amazonaws.com/';
 $loc1 = $location . "stop.php";
 //$loc2 = $location . "start.php";
@@ -13,6 +16,7 @@ if(!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == "off"){
     exit();
 }
 
+//Begins or resumes session, as long as user is on the correct HTTPS page
 session_start();
 
 /* route to execution page if command is sent */
@@ -45,7 +49,10 @@ if($_POST['restart']) {
 <body>
 <h1>Team getName</h1>
 
+
 <?php
+
+//Displays login form if user is NOT already logged in
 	if(!CheckLogin()) {
 		echo "<form id='login' " .
 		"action=$location method='post'><fieldset ><legend>Login</legend>" .
@@ -57,7 +64,7 @@ if($_POST['restart']) {
 		"<input type='submit' name='Submit' value='Submit' />" .
 		"</fieldset></form>";
 	}
-
+//Display the 'select instance' form if user IS logged in
 	if(CheckLogin() && $_POST['submitted']) {
 		echo "<form name='select_instance' action=$location " . 
 		"method='POST'><fieldset><legend>AWS EC2 getName CONSOLE</legend>" .
@@ -72,7 +79,7 @@ if($_POST['restart']) {
 		"<button type='submit' name='restart' value='restart instance'>RESTART</button>" .*/
 		"</fieldset></form>";
 	}
-
+//If credentials are wrong, access is denied.
 	if(!CheckLogin() && $_POST['submitted']) {
 		echo "<img src='deny.jpg' alt='Access Denied' >";
 	}
