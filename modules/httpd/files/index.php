@@ -18,6 +18,7 @@ session_start();
 /* route to execution page if command is sent */
 if($_POST['stop']) {
 	$_SESSION['instance'] = $_POST['instance'];
+	$_SESSION['submitted'] = $_POST['submitted'];
 	header("Location: $loc1");
 	exit();
 }
