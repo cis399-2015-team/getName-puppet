@@ -12,12 +12,12 @@ if(!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == "off"){
     exit();
 }
 
-if(!CheckLogin() && $_POST['submitted']) {
+session_start();
+
+if(!$_SESSION['submitted']) {
 	header("Location: https://ec2-52-10-36-255.us-west-2.compute.amazonaws.com");
     exit();
 }
-
-session_start();
 
 ?>
 
