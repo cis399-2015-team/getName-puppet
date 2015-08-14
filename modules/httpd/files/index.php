@@ -66,6 +66,7 @@ if($_POST['restart']) {
 		/*"<option value='i-fb518833'>i-fb518833</option>" .*/
 		"<option value='i-ff820337'>i-ff820337</option>" .
 		"</select>" .
+		"<input type='hidden' name='submitted' id='submitted' value='1'/>" .
 		"<button type='submit' name='stop' value='stop instance'>STOP</button>" .
 		/*"<button type='submit' name='start' value='start instance'>START</button>" .
 		"<button type='submit' name='restart' value='restart instance'>RESTART</button>" .*/
